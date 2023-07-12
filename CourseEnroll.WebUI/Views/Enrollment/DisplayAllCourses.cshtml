@@ -14,9 +14,9 @@
                 @foreach (var course in Model)
                 {
                     <tr>
-                    <td>@course.CourseCode</td>
-                    <td>@course.CourseName</td>
-                    <td>
+                    <td class="align-middle">@course.CourseCode</td>
+                    <td class="align-middle">@course.CourseName</td>
+                    <td class="align-middle">
                         <a class="btn btn-success" href="/Enrollment/EditCourse?id=@course.Id">Edit</a>
                         <a class="btn btn-danger" href="/Enrollment/DeleteCourse?id=@course.Id">Delete</a>
                     </td>

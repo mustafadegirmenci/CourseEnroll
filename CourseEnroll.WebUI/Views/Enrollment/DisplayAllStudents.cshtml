@@ -7,8 +7,7 @@
         <table class="table table-dark table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>Student</th>
                     <th>Birth Date</th>
                     <th>Enrolled Courses</th>
                     <th>Action</th>
@@ -18,11 +17,17 @@
                 @foreach (var studentViewModel in Model)
                 {
                     <tr>
-                        <td style="width:10%">@studentViewModel.FirstName</td>
-                        <td style="width:10%">@studentViewModel.LastName</td>
-                        <td style="width:10%">@studentViewModel.BirthDate.ToShortDateString()</td>
+                        <td class="align-middle" style="width:25%">
+                            <a class="text-decoration-none" style="color: white; font-weight: bold;" href="/Enrollment/ShowStudentDetails?id=@studentViewModel.Id">
+                                @studentViewModel.FirstName @studentViewModel.LastName
+                           </a>
+                        </td>
                         
-                        <td style="width:40%">
+                        <td class="align-middle" style="width:10%">
+                            @studentViewModel.BirthDate.ToShortDateString()
+                        </td>
+                        
+                        <td class="align-middle" style="width:40%">
                             <div>
                                 <div class="card text-bg-dark" style="width: 18rem;">
                                     <div id="collapseExample_@i" class="collapse">
@@ -45,14 +50,13 @@
                                         </ul>
                                     </div>
                                     
-                                    <div class="card-footer">
-                                        <a  
-                                            class="text-decoration-none" 
-                                            data-bs-toggle="collapse" 
-                                            href="#collapseExample_@i" 
-                                            role="button" 
-                                            aria-expanded="true" 
-                                            aria-controls="collapseExample_@i">
+                                    <div class="card-footer"
+                                         data-bs-toggle="collapse" 
+                                         href="#collapseExample_@i" 
+                                         role="button" 
+                                         aria-expanded="true" 
+                                         aria-controls="collapseExample_@i">
+                                        <a class="text-decoration-none" style="color: white; font-weight: bold;">
                                            Courses
                                        </a>
                                     </div>
@@ -61,7 +65,7 @@
                             </div>
                             
                         </td>
-                        <td>
+                        <td class="align-middle">
                             <a class="btn btn-success" href="/Enrollment/EditStudent?id=@studentViewModel.Id">Edit</a>
                             <a class="btn btn-danger" href="/Enrollment/DeleteStudent?id=@studentViewModel.Id">Delete</a>
                             <a class="btn btn-info" href="/Enrollment/EnrollStudentInCourses?id=@studentViewModel.Id">Enroll</a>
