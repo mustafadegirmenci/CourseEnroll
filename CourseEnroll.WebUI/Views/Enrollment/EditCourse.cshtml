@@ -1,0 +1,34 @@
+﻿@model CourseEnroll.WebUI.Models.Course.CourseViewModel;
+
+<div class="mt-2" style="width:50%">
+    <form asp-action="EditCourse">
+        <h2>Edit Course</h2>
+
+        <div class="mb-3">
+            <label asp-for="Id" class="form-label">Course ID</label>
+            <input asp-for="Id" type="hidden" class="form-control" placeholder=@Model.Id readonly>
+            <span class="text-danger" asp-validation-for="Id"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="CourseCode" class="form-label">Course Code</label>
+            <input asp-for="CourseCode" type="text" class="form-control" placeholder=@Model.CourseCode>
+            <span class="text-danger" asp-validation-for="CourseCode"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CourseName" class="form-label">Course Name</label>
+            <input asp-for="CourseName" type="text" class="form-control" placeholder=@Model.CourseName>
+            <span class="text-danger" asp-validation-for="CourseName"></span>
+        </div>
+
+        @if (TempData["msg"] != null)
+        {
+            <div class="mb-3">
+                @TempData["msg"]
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+C:\dev\CarReservation\CarReservation.Persistence\bin\Debug\net7.0\CarReservation.Persistence.deps.json
+C:\dev\CarReservation\CarReservation.Persistence\bin\Debug\net7.0\CarReservation.Persistence.dll
+C:\dev\CarReservation\CarReservation.Persistence\bin\Debug\net7.0\CarReservation.Persistence.pdb
+C:\dev\CarReservation\CarReservation.Persistence\bin\Debug\net7.0\CarReservation.Application.dll
+C:\dev\CarReservation\CarReservation.Persistence\bin\Debug\net7.0\CarReservation.Domain.dll
+C:\dev\CarReservation\CarReservation.Persistence\bin\Debug\net7.0\CarReservation.Application.pdb
+C:\dev\CarReservation\CarReservation.Persistence\bin\Debug\net7.0\CarReservation.Domain.pdb
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\CarReservation.Persistence.csproj.AssemblyReference.cache
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\CarReservation.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\CarReservation.Persistence.AssemblyInfoInputs.cache
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\CarReservation.Persistence.AssemblyInfo.cs
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\CarReservation.Persistence.csproj.CoreCompileInputs.cache
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\CarReservation.Persistence.csproj.CopyComplete
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\CarReservation.Persistence.dll
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\refint\CarReservation.Persistence.dll
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\CarReservation.Persistence.pdb
+C:\dev\CarReservation\CarReservation.Persistence\obj\Debug\net7.0\ref\CarReservation.Persistence.dll

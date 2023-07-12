@@ -1,0 +1,29 @@
+﻿@using CourseEnroll.WebUI.Models.Course
+@model CourseEnroll.WebUI.Models.Student.StudentViewModel
+
+<div class="mt-2" style="width:50%">
+    <form asp-action="EnrollStudentInCourses">
+        <h2>Enroll Student</h2>
+
+        <input asp-for="Id" type="hidden" class="form-control">
+
+        <h3>Select Courses:</h3>
+
+        @if (ViewBag.Courses is not null)
+        {
+            @foreach (CourseViewModel course in ViewBag.Courses)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="@("course_" + course.Id)" name="courseIDs" value="@course.Id">
+                    <label class="form-check-label" for="@("course_" + course.Id)">
+                        @course.CourseName
+                    </label>
+                </div>
+            }
+        }
+
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Enroll</button>
+        </div>
+    </form>
+</div>

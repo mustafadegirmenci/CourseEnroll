@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\CourseEnroll.WebUI.props" />
+</Project>

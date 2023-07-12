@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\dev\\CourseEnroll\\CourseEnroll.WebUI\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\CourseEnroll.WebUI.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CourseEnroll.WebUI.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\dev\\CourseEnroll\\CourseEnroll.WebUI\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.CourseEnroll.WebUI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.CourseEnroll.WebUI.props",
+      "PackagePath": "build\\CourseEnroll.WebUI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.CourseEnroll.WebUI.props",
+      "PackagePath": "buildMultiTargeting\\CourseEnroll.WebUI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.CourseEnroll.WebUI.props",
+      "PackagePath": "buildTransitive\\CourseEnroll.WebUI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

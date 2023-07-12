@@ -1,0 +1,385 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\dev\\CourseEnroll\\CarReservation.UnitTest\\CarReservation.UnitTest.csproj": {}
+  },
+  "projects": {
+    "C:\\dev\\CourseEnroll\\CarReservation.UnitTest\\CarReservation.UnitTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\dev\\CourseEnroll\\CarReservation.UnitTest\\CarReservation.UnitTest.csproj",
+        "projectName": "CarReservation.UnitTest",
+        "projectPath": "C:\\dev\\CourseEnroll\\CarReservation.UnitTest\\CarReservation.UnitTest.csproj",
+        "packagesPath": "C:\\Users\\Mustafa\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\CourseEnroll\\CarReservation.UnitTest\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mustafa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\dev\\CourseEnroll\\CourseEnroll.WebAPI\\CourseEnroll.WebAPI.csproj": {
+                "projectPath": "C:\\dev\\CourseEnroll\\CourseEnroll.WebAPI\\CourseEnroll.WebAPI.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[8.0.0-preview.5.23280.1, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.18.4, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\dev\\CourseEnroll\\CourseEnroll.Application\\CourseEnroll.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\dev\\CourseEnroll\\CourseEnroll.Application\\CourseEnroll.Application.csproj",
+        "projectName": "CourseEnroll.Application",
+        "projectPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Application\\CourseEnroll.Application.csproj",
+        "packagesPath": "C:\\Users\\Mustafa\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mustafa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\dev\\CourseEnroll\\CourseEnroll.Domain\\CourseEnroll.Domain.csproj": {
+                "projectPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Domain\\CourseEnroll.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.6.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.6.0, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\dev\\CourseEnroll\\CourseEnroll.Domain\\CourseEnroll.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\dev\\CourseEnroll\\CourseEnroll.Domain\\CourseEnroll.Domain.csproj",
+        "projectName": "CourseEnroll.Domain",
+        "projectPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Domain\\CourseEnroll.Domain.csproj",
+        "packagesPath": "C:\\Users\\Mustafa\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mustafa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\dev\\CourseEnroll\\CourseEnroll.Persistence\\CourseEnroll.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\dev\\CourseEnroll\\CourseEnroll.Persistence\\CourseEnroll.Persistence.csproj",
+        "projectName": "CourseEnroll.Persistence",
+        "projectPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Persistence\\CourseEnroll.Persistence.csproj",
+        "packagesPath": "C:\\Users\\Mustafa\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Persistence\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mustafa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\dev\\CourseEnroll\\CourseEnroll.Application\\CourseEnroll.Application.csproj": {
+                "projectPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Application\\CourseEnroll.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0-preview.5.23280.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.0-preview.5.23280.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.0-preview.5.23280.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\dev\\CourseEnroll\\CourseEnroll.WebAPI\\CourseEnroll.WebAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\dev\\CourseEnroll\\CourseEnroll.WebAPI\\CourseEnroll.WebAPI.csproj",
+        "projectName": "CourseEnroll.WebAPI",
+        "projectPath": "C:\\dev\\CourseEnroll\\CourseEnroll.WebAPI\\CourseEnroll.WebAPI.csproj",
+        "packagesPath": "C:\\Users\\Mustafa\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\CourseEnroll\\CourseEnroll.WebAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mustafa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\dev\\CourseEnroll\\CourseEnroll.Application\\CourseEnroll.Application.csproj": {
+                "projectPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Application\\CourseEnroll.Application.csproj"
+              },
+              "C:\\dev\\CourseEnroll\\CourseEnroll.Persistence\\CourseEnroll.Persistence.csproj": {
+                "projectPath": "C:\\dev\\CourseEnroll\\CourseEnroll.Persistence\\CourseEnroll.Persistence.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400-preview.23274.1\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

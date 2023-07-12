@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CourseEnroll.WebUI.Models.Student.StudentViewModel>
+
+@{var i = 0; }
+
+<div>
+    <div>
+        <table class="table table-dark table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Birth Date</th>
+                    <th>Enrolled Courses</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var studentViewModel in Model)
+                {
+                    <tr>
+                        <td style="width:10%">@studentViewModel.FirstName</td>
+                        <td style="width:10%">@studentViewModel.LastName</td>
+                        <td style="width:10%">@studentViewModel.BirthDate.ToShortDateString()</td>
+                        
+                        <td style="width:40%">
+                            <div>
+                                <div class="card text-bg-dark" style="width: 18rem;">
+                                    <div id="collapseExample_@i" class="collapse">
+                                        <ul class="list-group list-group-flush">
+                                            @if (studentViewModel.EnrolledCourses != null && studentViewModel.EnrolledCourses.Any())
+                                            {
+                                                @foreach (var course in studentViewModel.EnrolledCourses)
+                                                {
+                                                    <li class="list-group-item list-group-item-secondary">
+                                                        @course.CourseCode - @course.CourseName
+                                                    </li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li class="list-group-item list-group-item-dark">
+                                                    <p>No enrolled courses.</p>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="card-footer">
+                                        <a  
+                                            class="text-decoration-none" 
+                                            data-bs-toggle="collapse" 
+                                            href="#collapseExample_@i" 
+                                            role="button" 
+                                            aria-expanded="true" 
+                                            aria-controls="collapseExample_@i">
+                                           Courses
+                                       </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                        </td>
+                        <td>
+                            <a class="btn btn-success" href="/Enrollment/EditStudent?id=@studentViewModel.Id">Edit</a>
+                            <a class="btn btn-danger" href="/Enrollment/DeleteStudent?id=@studentViewModel.Id">Delete</a>
+                            <a class="btn btn-info" href="/Enrollment/EnrollStudentInCourses?id=@studentViewModel.Id">Enroll</a>
+                        </td>
+                    </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

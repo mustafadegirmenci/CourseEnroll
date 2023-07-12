@@ -1,0 +1,12 @@
+C:\dev\CourseEnroll\CourseEnroll.Domain\bin\Debug\net7.0\CourseEnroll.Domain.deps.json
+C:\dev\CourseEnroll\CourseEnroll.Domain\bin\Debug\net7.0\CourseEnroll.Domain.dll
+C:\dev\CourseEnroll\CourseEnroll.Domain\bin\Debug\net7.0\CourseEnroll.Domain.pdb
+C:\dev\CourseEnroll\CourseEnroll.Domain\obj\Debug\net7.0\CourseEnroll.Domain.csproj.AssemblyReference.cache
+C:\dev\CourseEnroll\CourseEnroll.Domain\obj\Debug\net7.0\CourseEnroll.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\CourseEnroll\CourseEnroll.Domain\obj\Debug\net7.0\CourseEnroll.Domain.AssemblyInfoInputs.cache
+C:\dev\CourseEnroll\CourseEnroll.Domain\obj\Debug\net7.0\CourseEnroll.Domain.AssemblyInfo.cs
+C:\dev\CourseEnroll\CourseEnroll.Domain\obj\Debug\net7.0\CourseEnroll.Domain.csproj.CoreCompileInputs.cache
+C:\dev\CourseEnroll\CourseEnroll.Domain\obj\Debug\net7.0\CourseEnroll.Domain.dll
+C:\dev\CourseEnroll\CourseEnroll.Domain\obj\Debug\net7.0\refint\CourseEnroll.Domain.dll
+C:\dev\CourseEnroll\CourseEnroll.Domain\obj\Debug\net7.0\CourseEnroll.Domain.pdb
+C:\dev\CourseEnroll\CourseEnroll.Domain\obj\Debug\net7.0\ref\CourseEnroll.Domain.dll

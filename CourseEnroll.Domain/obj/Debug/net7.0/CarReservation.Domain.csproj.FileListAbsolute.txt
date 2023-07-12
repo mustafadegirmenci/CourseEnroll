@@ -1,0 +1,12 @@
+C:\dev\CarReservation\CarReservation.Domain\bin\Debug\net7.0\CarReservation.Domain.deps.json
+C:\dev\CarReservation\CarReservation.Domain\bin\Debug\net7.0\CarReservation.Domain.dll
+C:\dev\CarReservation\CarReservation.Domain\bin\Debug\net7.0\CarReservation.Domain.pdb
+C:\dev\CarReservation\CarReservation.Domain\obj\Debug\net7.0\CarReservation.Domain.csproj.AssemblyReference.cache
+C:\dev\CarReservation\CarReservation.Domain\obj\Debug\net7.0\CarReservation.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\CarReservation\CarReservation.Domain\obj\Debug\net7.0\CarReservation.Domain.AssemblyInfoInputs.cache
+C:\dev\CarReservation\CarReservation.Domain\obj\Debug\net7.0\CarReservation.Domain.AssemblyInfo.cs
+C:\dev\CarReservation\CarReservation.Domain\obj\Debug\net7.0\CarReservation.Domain.csproj.CoreCompileInputs.cache
+C:\dev\CarReservation\CarReservation.Domain\obj\Debug\net7.0\CarReservation.Domain.dll
+C:\dev\CarReservation\CarReservation.Domain\obj\Debug\net7.0\refint\CarReservation.Domain.dll
+C:\dev\CarReservation\CarReservation.Domain\obj\Debug\net7.0\CarReservation.Domain.pdb
+C:\dev\CarReservation\CarReservation.Domain\obj\Debug\net7.0\ref\CarReservation.Domain.dll

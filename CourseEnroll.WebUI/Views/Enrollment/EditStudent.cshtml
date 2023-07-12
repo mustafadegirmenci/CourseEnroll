@@ -1,0 +1,35 @@
+﻿@model CourseEnroll.WebUI.Models.Student.StudentViewModel;
+
+<div class="mt-2" style="width:50%">
+    <form asp-action="EditStudent">
+        <h2>Edit Student</h2>
+        <input asp-for="Id" type="hidden" class="form-control">
+
+        <div class="mb-3">
+            <label asp-for="FirstName" class="form-label">First Name</label>
+            <input asp-for="FirstName" type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="FirstName"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="LastName" class="form-label">Last Name</label>
+            <input asp-for="LastName" type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="LastName"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="BirthDate" class="form-label">Birth Date</label>
+            <input asp-for="BirthDate" input type="text" class="form-control">
+            <span class="text-danger" asp-validation-for="BirthDate"></span>
+        </div>
+
+        @if (TempData["msg"] != null)
+        {
+            <div class="mb-3">
+                @TempData["msg"]
+            </div>
+        }
+
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>

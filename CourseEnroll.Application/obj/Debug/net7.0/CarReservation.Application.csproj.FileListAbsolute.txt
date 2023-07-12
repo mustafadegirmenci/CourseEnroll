@@ -1,0 +1,15 @@
+C:\dev\CarReservation\CarReservation.Application\bin\Debug\net7.0\CarReservation.Application.deps.json
+C:\dev\CarReservation\CarReservation.Application\bin\Debug\net7.0\CarReservation.Application.dll
+C:\dev\CarReservation\CarReservation.Application\bin\Debug\net7.0\CarReservation.Application.pdb
+C:\dev\CarReservation\CarReservation.Application\bin\Debug\net7.0\CarReservation.Domain.dll
+C:\dev\CarReservation\CarReservation.Application\bin\Debug\net7.0\CarReservation.Domain.pdb
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\CarReservation.Application.csproj.AssemblyReference.cache
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\CarReservation.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\CarReservation.Application.AssemblyInfoInputs.cache
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\CarReservation.Application.AssemblyInfo.cs
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\CarReservation.Application.csproj.CoreCompileInputs.cache
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\CarReservation.Application.csproj.CopyComplete
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\CarReservation.Application.dll
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\refint\CarReservation.Application.dll
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\CarReservation.Application.pdb
+C:\dev\CarReservation\CarReservation.Application\obj\Debug\net7.0\ref\CarReservation.Application.dll

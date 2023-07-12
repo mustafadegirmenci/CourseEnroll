@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CourseEnroll.WebUI.Models.Course.CourseViewModel>
+
+<div>
+    <div>
+        <table class="table table-dark table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var course in Model)
+                {
+                    <tr>
+                    <td>@course.CourseCode</td>
+                    <td>@course.CourseName</td>
+                    <td>
+                        <a class="btn btn-success" href="/Enrollment/EditCourse?id=@course.Id">Edit</a>
+                        <a class="btn btn-danger" href="/Enrollment/DeleteCourse?id=@course.Id">Delete</a>
+                    </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
