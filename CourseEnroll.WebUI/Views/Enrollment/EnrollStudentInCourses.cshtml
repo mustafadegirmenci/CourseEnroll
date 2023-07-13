@@ -6,12 +6,22 @@
         <h2>Enroll Student</h2>
 
         <input asp-for="Id" type="hidden" class="form-control">
-
-        <h3>Select Courses:</h3>
-
-        @if (ViewBag.Courses is not null)
+        
+        @if (ViewBag.enrolledCourses is not null)
         {
-            @foreach (CourseViewModel course in ViewBag.Courses)
+            @foreach (CourseViewModel course in ViewBag.enrolledCourses)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" checked id="@("course_" + course.Id)" name="courseIDs" value="@course.Id">
+                    <label class="form-check-label" for="@("course_" + course.Id)">
+                        @course.CourseName
+                    </label>
+                </div>
+            }
+        }
+        @if (ViewBag.notEnrolledCourses is not null)
+        {
+            @foreach (CourseViewModel course in ViewBag.notEnrolledCourses)
             {
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="@("course_" + course.Id)" name="courseIDs" value="@course.Id">

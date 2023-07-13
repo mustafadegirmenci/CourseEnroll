@@ -180,10 +180,12 @@ namespace CourseEnroll.WebUI.Controllers
         public IActionResult EnrollStudentInCourses(int id)
         {
             var student = _databaseContext.Students.Find(id);
-            var courses = _databaseContext.Courses.ToList();
+            var notEnrolledCourses = _databaseContext.Courses.Where(c => !c.Students.Contains(student)).ToList();
+            var enrolledCourses = _databaseContext.Courses.Where(c => c.Students.Contains(student)).ToList();
             
             //Check here
-            ViewBag.Courses = _mapper.Map<List<Course>, IEnumerable<CourseViewModel>>(courses);
+            ViewBag.notEnrolledCourses = _mapper.Map<List<Course>, IEnumerable<CourseViewModel>>(notEnrolledCourses);
+            ViewBag.enrolledCourses = _mapper.Map<List<Course>, IEnumerable<CourseViewModel>>(enrolledCourses);
             
             return View(_mapper.Map<StudentViewModel>(student));
         }
@@ -199,15 +201,17 @@ namespace CourseEnroll.WebUI.Controllers
             try
             {
                 var student = _databaseContext.Students.FirstOrDefault(s => s.Id == Id);
+                _databaseContext.Entry(student).Collection(s => s.EnrolledCourses).Load();
+                
                 var courses = _databaseContext.Courses.Where(c => courseIDs.Contains(c.Id)).ToList();
-
-                if (student.EnrolledCourses is null)
+                
+                for (int i = student.EnrolledCourses.Count - 1; i >= 0; i--)
                 {
-                    student.EnrolledCourses = new(courses);
-                }
-                else
-                {
-                    student.EnrolledCourses = student.EnrolledCourses.Union(courses).ToList();
+                    var oldCourse = student.EnrolledCourses[i];
+                    if (!courses.Contains(oldCourse))
+                    {
+                        student.EnrolledCourses.Remove(oldCourse);
+                    }
                 }
 
                 _databaseContext.Update(student);
