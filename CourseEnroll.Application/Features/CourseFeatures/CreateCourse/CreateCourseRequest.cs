@@ -3,6 +3,6 @@
 namespace CourseEnroll.Application.Features.CourseFeatures.CreateCourse;
 
 public sealed record CreateCourseRequest(
-    string CourseID,
+    string CourseCode,
     string CourseName
 ) : IRequest<CreateCourseResponse>;

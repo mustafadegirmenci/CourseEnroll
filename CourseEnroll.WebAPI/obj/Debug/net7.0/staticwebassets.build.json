@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "JgYMRlc5SAMAZvIhfyEHoHN8/BB8JH+R9tl135CgG3o=",
+  "Source": "CourseEnroll.WebAPI",
+  "BasePath": "_content/CourseEnroll.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

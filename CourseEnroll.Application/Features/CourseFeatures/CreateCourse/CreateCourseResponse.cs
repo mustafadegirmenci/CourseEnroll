@@ -2,6 +2,6 @@
 
 public sealed record CreateCourseResponse
 {
-    public string CourseID { get; set; }
+    public string CourseCode { get; set; }
     public string CourseName { get; set; }
 }

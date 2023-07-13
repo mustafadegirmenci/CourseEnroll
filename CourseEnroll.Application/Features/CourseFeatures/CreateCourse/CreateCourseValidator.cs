@@ -6,7 +6,7 @@ public sealed class CreateCourseValidator : AbstractValidator<CreateCourseReques
 {
     public CreateCourseValidator()
     {
-        RuleFor(x => x.CourseID).NotEmpty();
+        RuleFor(x => x.CourseCode).NotEmpty();
         RuleFor(x => x.CourseName).NotEmpty();
     }
 }
