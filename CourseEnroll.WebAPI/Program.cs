@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using CourseEnroll.Application;
 using CourseEnroll.Extensions;
 using CourseEnroll.Persistence;
@@ -7,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigurePersistence(builder.Configuration);
 builder.Services.ConfigureApplication();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
+
 
 builder.Services.ConfigureApiBehavior();
 builder.Services.ConfigureCorsPolicy();

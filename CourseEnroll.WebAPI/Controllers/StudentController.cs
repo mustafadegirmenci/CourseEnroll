@@ -22,7 +22,7 @@ public class StudentController : ControllerBase
     public async Task<ActionResult<List<GetAllStudentResponse>>> GetAll(CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(new GetAllStudentRequest(), cancellationToken);
-        return Ok(response);
+        return Ok(response.Students);
     }
     
     [HttpPost]
