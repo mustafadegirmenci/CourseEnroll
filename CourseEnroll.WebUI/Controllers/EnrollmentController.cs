@@ -204,15 +204,9 @@ namespace CourseEnroll.WebUI.Controllers
                 _databaseContext.Entry(student).Collection(s => s.EnrolledCourses).Load();
                 
                 var courses = _databaseContext.Courses.Where(c => courseIDs.Contains(c.Id)).ToList();
-                
-                for (int i = student.EnrolledCourses.Count - 1; i >= 0; i--)
-                {
-                    var oldCourse = student.EnrolledCourses[i];
-                    if (!courses.Contains(oldCourse))
-                    {
-                        student.EnrolledCourses.Remove(oldCourse);
-                    }
-                }
+
+                student.EnrolledCourses.Clear();
+                student.EnrolledCourses.AddRange(courses);
 
                 _databaseContext.Update(student);
                 _databaseContext.SaveChanges();
