@@ -1,0 +1,109 @@
+﻿@model StudentViewModel
+@{
+var studentViewModel = Model;
+}
+<!-- Info -->
+<div class="col-xl-6 col-lg-4 order-2 mb-4">
+	<div class="card h-300">
+		<div class="card-body">
+			<h4 class="fw-bold py-3 mb-0"><span class="text-muted fw-light">Student / Student Details / </span>@studentViewModel.FirstName @studentViewModel.LastName</h4>
+			<!-- Accordion -->
+			<div class="col-md">
+								
+				<small class="text-light fw-semibold">All the student details are shown here.</small>
+				
+				<div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
+					<div class="accordion-item d-flex card">
+						<h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconH2@i">
+							<button
+								type="button"
+								class="accordion-button collapsed"
+								data-bs-toggle="collapse"
+								data-bs-target="#accordionIcon-p"
+								aria-controls="accordionIcon-p">
+								Personal Information
+							</button>
+						</h2>
+						<div id="accordionIcon-p" class="accordion-collapse collapse " data-bs-parent="#accordionIcon">
+							<div class="accordion-body">
+								<!-- List group Flush (Without main border) -->
+								<div class="col-xl mb-4 mb-xl-0">
+									<div class="demo-inline-spacing mt-3">
+										<div class="list-group list-group-flush">
+											<a href="#" class="list-group-item list-group-item-action">
+												<span class="text-muted fw-light">Student ID /</span> @studentViewModel.Id
+											</a>
+											
+											<a href="#" class="list-group-item list-group-item-action">
+												<span class="text-muted fw-light">Birth Date /</span> @studentViewModel.BirthDate.ToShortDateString()
+											</a>
+											
+											<a href="#" class="list-group-item list-group-item-action">
+												<span class="text-muted fw-light">Last Name /</span> @studentViewModel.LastName
+											</a>
+											
+											<a href="#" class="list-group-item list-group-item-action">
+												<span class="text-muted fw-light">First Name /</span> @studentViewModel.FirstName
+											</a>
+										</div>
+									</div>
+								</div>
+								<!--/ List group Flush (Without main border) -->
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
+					<div class="accordion-item d-flex card">
+						<h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconH2@i">
+							<button
+								type="button"
+								class="accordion-button collapsed"
+								data-bs-toggle="collapse"
+								data-bs-target="#accordionIcon-i"
+								aria-controls="accordionIcon-i">
+								Enrolled Courses
+							</button>
+							<div class="dropdown mr-3">
+								<button
+									class="btn p-0"
+									type="button"
+									id="transactionID"
+									data-bs-toggle="dropdown"
+									aria-haspopup="true"
+									aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i>
+								</button>
+								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
+									<a class="dropdown-item" href="/Enrollment/EditStudent?id=@studentViewModel.Id">Edit</a>
+									<a class="dropdown-item" href="/Enrollment/DeleteStudent?id=@studentViewModel.Id">Delete</a>
+									<a class="dropdown-item" href="/Enrollment/EnrollStudentInCourses?id=@studentViewModel.Id">Enroll</a>
+								</div>
+							</div>
+						</h2>
+						<div id="accordionIcon-i" class="accordion-collapse collapse " data-bs-parent="#accordionIcon">
+							<div class="accordion-body">
+								@foreach (var course in studentViewModel.EnrolledCourses)
+								{
+									<!-- List group Flush (Without main border) -->
+									<div class="col-xl mb-4 mb-xl-0">
+										<div class="demo-inline-spacing mt-3">
+											<div class="list-group list-group-flush">
+												<a href="/Enrollment/ShowCourse?id=@course.Id" class="list-group-item list-group-item-action">
+													<span class="text-muted fw-light">@course.CourseCode /</span> @course.CourseName
+												</a>
+											</div>
+										</div>
+									</div>
+									<!--/ List group Flush (Without main border) -->
+								}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ Accordion -->
+		</div>
+	</div>
+</div>
+<!--/ Info -->

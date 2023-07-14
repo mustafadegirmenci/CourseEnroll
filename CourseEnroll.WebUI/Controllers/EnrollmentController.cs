@@ -4,6 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CourseEnroll.WebUI.Controllers
 {
+    public enum ActiveTabIndex
+    {
+        Dashboard = 0,
+        AllCourses = 1,
+        AddCourse = 2,
+        AllStudents = 3,
+        AddStudent = 4,
+    }
+    
     public class EnrollmentController : Controller
     {
         private readonly StudentProvider _studentProvider;
@@ -20,8 +29,16 @@ namespace CourseEnroll.WebUI.Controllers
             return View();
         }
         #region Course Methods
+        
+        public async Task<IActionResult> ShowCourse(int id)
+        {
+            var course = await _courseProvider.GetById(id);
+            return View(course);
+        }
+        
         public IActionResult AddCourse()
         {
+            ViewBag.activeTab = (int)ActiveTabIndex.AddCourse;
             return View();
         }
 
@@ -37,7 +54,7 @@ namespace CourseEnroll.WebUI.Controllers
             {
                 await _courseProvider.Create(courseViewModel);
 
-                return RedirectToAction("AddCourse");
+                return RedirectToAction(nameof(DisplayAllCourses));
             }
             catch (Exception e)
             {
@@ -49,12 +66,13 @@ namespace CourseEnroll.WebUI.Controllers
         public async Task<IActionResult> DeleteCourse(int id)
         {
             await _courseProvider.DeleteById(id);
-            return RedirectToAction(nameof(DisplayAllStudents));
+            return RedirectToAction(nameof(DisplayAllCourses));
         }
 
         public async Task<IActionResult> EditCourse(int id)
         {
             var course = await _courseProvider.GetById(id);
+            ViewBag.activeTab = (int)ActiveTabIndex.AllCourses;
             return View(course);
         }
 
@@ -81,14 +99,23 @@ namespace CourseEnroll.WebUI.Controllers
 
         public async Task<IActionResult> DisplayAllCourses()
         {
+            ViewBag.activeTab = (int)ActiveTabIndex.AllCourses;
             var courses = await _courseProvider.GetAll();
             return View(courses);
         }
         #endregion
 
         #region Student Methods
+
+        public async Task<IActionResult> ShowStudent(int id)
+        {
+            var student = await _studentProvider.GetById(id);
+            return View(student);
+        }
+        
         public IActionResult AddStudent()
         {
+            ViewBag.activeTab = (int)ActiveTabIndex.AddStudent;
             return View();
         }
 
@@ -104,7 +131,7 @@ namespace CourseEnroll.WebUI.Controllers
             {
                 await _studentProvider.Create(studentViewModel);
 
-                return RedirectToAction("AddStudent");
+                return RedirectToAction(nameof(DisplayAllStudents));
             }
             catch (Exception e)
             {
@@ -121,6 +148,7 @@ namespace CourseEnroll.WebUI.Controllers
 
         public async Task<IActionResult> EditStudent(int id)
         {
+            ViewBag.activeTab = (int)ActiveTabIndex.AllStudents;
             var student = await _studentProvider.GetById(id);
             return View(student);
         }
@@ -160,6 +188,7 @@ namespace CourseEnroll.WebUI.Controllers
 
             ViewBag.notEnrolledCourses = notEnrolledCourses;
             ViewBag.enrolledCourses = enrolledCourses;
+            ViewBag.activeTab = (int)ActiveTabIndex.AllStudents;
             
             return View(student);
         }
@@ -195,6 +224,7 @@ namespace CourseEnroll.WebUI.Controllers
 
         public async Task<IActionResult> DisplayAllStudents()
         {
+            ViewBag.activeTab = (int)ActiveTabIndex.AllStudents;
             var students = await _studentProvider.GetAll();
             return View(students);
         }

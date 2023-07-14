@@ -5,7 +5,6 @@
         <h2>Edit Course</h2>
 
         <div class="mb-3">
-            <label asp-for="Id" class="form-label">Course ID</label>
             <input asp-for="Id" type="hidden" class="form-control" placeholder=@Model.Id readonly>
             <span class="text-danger" asp-validation-for="Id"></span>
         </div>

@@ -1,28 +1,74 @@
 ﻿@model IEnumerable<CourseViewModel>
-
-<div>
-    <div>
-        <table class="table table-dark table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Course ID</th>
-                    <th>Course Name</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var course in Model)
-                {
-                    <tr>
-                    <td class="align-middle">@course.CourseCode</td>
-                    <td class="align-middle">@course.CourseName</td>
-                    <td class="align-middle">
-                        <a class="btn btn-success" href="/Enrollment/EditCourse?id=@course.Id">Edit</a>
-                        <a class="btn btn-danger" href="/Enrollment/DeleteCourse?id=@course.Id">Delete</a>
-                    </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+@{
+var i = 0;
+}
+<!-- Info -->
+<div class="col-xl-6 col-lg-4 order-2 mb-4">
+	<div class="card h-300">
+		<div class="card-body">
+			<h4 class="fw-bold py-3 mb-0"><span class="text-muted fw-light">Course /</span> All Courses</h4>
+			<!-- Accordion -->
+			<div class="col-md">
+				<small class="text-light fw-semibold">Click on the course to see the registered students.</small>
+				<div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
+					@foreach (var courseViewModel in Model)
+					{
+					<div class="accordion-item d-flex card">
+						<h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconH2@i">
+							<button
+								type="button"
+								class="accordion-button collapsed"
+								data-bs-toggle="collapse"
+								data-bs-target="#accordionIcon-@i"
+								aria-controls="accordionIcon-@i">
+								<div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+									<div class="me-2">
+										<small class="text-muted d-block mb-1">@courseViewModel.CourseCode</small>
+										<h6 class="mb-0">@courseViewModel.CourseName</h6>
+									</div>
+								</div>
+							</button>
+							<div class="dropdown">
+								<button
+									class="btn p-0"
+									type="button"
+									id="transactionID"
+									data-bs-toggle="dropdown"
+									aria-haspopup="true"
+									aria-expanded="false">
+								<i class="bx bx-dots-vertical-rounded"></i>
+								</button>
+								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
+									<a class="dropdown-item" href="/Enrollment/EditCourse?id=@courseViewModel.Id">Edit</a>
+									<a class="dropdown-item" href="/Enrollment/DeleteCourse?id=@courseViewModel.Id">Delete</a>
+								</div>
+							</div>
+						</h2>
+						<div id="accordionIcon-@i" class="accordion-collapse collapse " data-bs-parent="#accordionIcon">
+							<div class="accordion-body">
+								@foreach (var student in courseViewModel.Students)
+								{
+								<!-- List group Flush (Without main border) -->
+								<div class="col-xl mb-4 mb-xl-0">
+									<div class="demo-inline-spacing mt-3">
+										<div class="list-group list-group-flush">
+											<a href="/Enrollment/ShowStudent?id=@student.Id" class="list-group-item list-group-item-action">
+											<span class="text-muted fw-light">@student.Id - </span> @student.FirstName @student.LastName
+											</a>
+										</div>
+									</div>
+								</div>
+								<!--/ List group Flush (Without main border) -->
+								}
+							</div>
+						</div>
+					</div>
+					i++;
+					}
+				</div>
+			</div>
+			<!--/ Accordion -->
+		</div>
+	</div>
 </div>
+<!--/ Info -->
