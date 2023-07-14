@@ -1,21 +1,18 @@
-﻿using AutoMapper;
-using CourseEnroll.Domain.Entities;
-using CourseEnroll.Persistence.Context;
-using CourseEnroll.WebUI.Models.Course;
-using CourseEnroll.WebUI.Models.Student;
+﻿using CourseEnroll.WebUI.Models;
+using CourseEnroll.WebUI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CourseEnroll.WebUI.Controllers
 {
     public class EnrollmentController : Controller
     {
-        private readonly DataContext _databaseContext;
-        private readonly IMapper _mapper;
+        private readonly StudentProvider _studentProvider;
+        private readonly CourseProvider _courseProvider;
 
-        public EnrollmentController(DataContext databaseContext, IMapper mapper)
+        public EnrollmentController(StudentProvider studentProvider, CourseProvider courseProvider)
         {
-            _databaseContext = databaseContext;
-            _mapper = mapper;
+            _studentProvider = studentProvider;
+            _courseProvider = courseProvider;
         }
 
         public IActionResult Index()
@@ -29,7 +26,7 @@ namespace CourseEnroll.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCourse(CourseViewModel courseViewModel)
+        public async Task<IActionResult> AddCourse(CourseViewModel courseViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -38,8 +35,7 @@ namespace CourseEnroll.WebUI.Controllers
 
             try
             {
-                _databaseContext.Add(_mapper.Map<Course>(courseViewModel));
-                _databaseContext.SaveChanges();
+                await _courseProvider.Create(courseViewModel);
 
                 return RedirectToAction("AddCourse");
             }
@@ -50,32 +46,20 @@ namespace CourseEnroll.WebUI.Controllers
             }
         }
 
-        public IActionResult DeleteCourse(int id)
+        public async Task<IActionResult> DeleteCourse(int id)
         {
-            try
-            {
-                var course = _databaseContext.Courses.Find(id);
-                if (course != null)
-                {
-                    _databaseContext.Remove(course);
-                    _databaseContext.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
-
-            }
+            await _courseProvider.DeleteById(id);
             return RedirectToAction(nameof(DisplayAllStudents));
         }
 
-        public IActionResult EditCourse(int Id)
+        public async Task<IActionResult> EditCourse(int id)
         {
-            var course = _databaseContext.Courses.Find(Id);
-            return View(_mapper.Map<CourseViewModel>(course));
+            var course = await _courseProvider.GetById(id);
+            return View(course);
         }
 
         [HttpPost]
-        public IActionResult EditCourse(CourseViewModel courseViewModel)
+        public async Task<IActionResult> EditCourse(CourseViewModel courseViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -84,8 +68,7 @@ namespace CourseEnroll.WebUI.Controllers
 
             try
             {
-                _databaseContext.Update(_mapper.Map<Course>(courseViewModel));
-                _databaseContext.SaveChanges();
+                await _courseProvider.Update(courseViewModel);
 
                 return RedirectToAction(nameof(DisplayAllCourses));
             }
@@ -96,10 +79,10 @@ namespace CourseEnroll.WebUI.Controllers
             }
         }
 
-        public IActionResult DisplayAllCourses()
+        public async Task<IActionResult> DisplayAllCourses()
         {
-            var courses = _databaseContext.Courses.ToList();
-            return View(_mapper.Map<List<Course>, IEnumerable<CourseViewModel>>(courses));
+            var courses = await _courseProvider.GetAll();
+            return View(courses);
         }
         #endregion
 
@@ -110,7 +93,7 @@ namespace CourseEnroll.WebUI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddStudent(StudentViewModel studentViewModel)
+        public async Task<IActionResult> AddStudent(StudentViewModel studentViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -119,8 +102,7 @@ namespace CourseEnroll.WebUI.Controllers
 
             try
             {
-                _databaseContext.Add(_mapper.Map<Student>(studentViewModel));
-                _databaseContext.SaveChanges();
+                await _studentProvider.Create(studentViewModel);
 
                 return RedirectToAction("AddStudent");
             }
@@ -131,32 +113,20 @@ namespace CourseEnroll.WebUI.Controllers
             }
         }
 
-        public IActionResult DeleteStudent(int id)
+        public async Task<IActionResult> DeleteStudent(int id)
         {
-            try
-            {
-                var student = _databaseContext.Students.Find(id);
-                if (student != null)
-                {
-                    _databaseContext.Remove(student);
-                    _databaseContext.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
-
-            }
+            await _studentProvider.DeleteById(id);
             return RedirectToAction(nameof(DisplayAllStudents));
         }
 
-        public IActionResult EditStudent(int id)
+        public async Task<IActionResult> EditStudent(int id)
         {
-            var student = _databaseContext.Students.Find(id);
-            return View(_mapper.Map<StudentViewModel>(student));
+            var student = await _studentProvider.GetById(id);
+            return View(student);
         }
 
         [HttpPost]
-        public IActionResult EditStudent(StudentViewModel studentViewModel)
+        public async Task<IActionResult> EditStudent(StudentViewModel studentViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -165,8 +135,7 @@ namespace CourseEnroll.WebUI.Controllers
 
             try
             {
-                _databaseContext.Update(_mapper.Map<Student>(studentViewModel));
-                _databaseContext.SaveChanges();
+                await _studentProvider.Update(studentViewModel);
 
                 return RedirectToAction(nameof(DisplayAllStudents));
             }
@@ -177,21 +146,24 @@ namespace CourseEnroll.WebUI.Controllers
             }
         }
 
-        public IActionResult EnrollStudentInCourses(int id)
+        public async Task<IActionResult> EnrollStudentInCourses(int id)
         {
-            var student = _databaseContext.Students.Find(id);
-            var notEnrolledCourses = _databaseContext.Courses.Where(c => !c.Students.Contains(student)).ToList();
-            var enrolledCourses = _databaseContext.Courses.Where(c => c.Students.Contains(student)).ToList();
+            var student = await _studentProvider.GetById(id);
             
-            //Check here
-            ViewBag.notEnrolledCourses = _mapper.Map<List<Course>, IEnumerable<CourseViewModel>>(notEnrolledCourses);
-            ViewBag.enrolledCourses = _mapper.Map<List<Course>, IEnumerable<CourseViewModel>>(enrolledCourses);
+            //TODO: Optimize here
+            var allCourses = await _courseProvider.GetAll();
             
-            return View(_mapper.Map<StudentViewModel>(student));
+            var notEnrolledCourses = allCourses.Where(c => !c.Students.Contains(student)).ToList();
+            var enrolledCourses = allCourses.Where(c => c.Students.Contains(student)).ToList();
+
+            ViewBag.notEnrolledCourses = notEnrolledCourses;
+            ViewBag.enrolledCourses = enrolledCourses;
+            
+            return View(student);
         }
 
         [HttpPost]
-        public IActionResult EnrollStudentInCourses(int Id, List<int> courseIDs)
+        public async Task<IActionResult> EnrollStudentInCourses(int Id, List<int> courseIDs)
         {
             if (!ModelState.IsValid)
             {
@@ -200,16 +172,14 @@ namespace CourseEnroll.WebUI.Controllers
 
             try
             {
-                var student = _databaseContext.Students.FirstOrDefault(s => s.Id == Id);
-                _databaseContext.Entry(student).Collection(s => s.EnrolledCourses).Load();
+                var student = await _studentProvider.GetById(Id);
+                //TODO: Optimize here
+                var allCourses = await _courseProvider.GetAll();
                 
-                var courses = _databaseContext.Courses.Where(c => courseIDs.Contains(c.Id)).ToList();
+                var courses = allCourses.Where(c => courseIDs.Contains(c.Id)).ToList();
 
                 student.EnrolledCourses.Clear();
                 student.EnrolledCourses.AddRange(courses);
-
-                _databaseContext.Update(student);
-                _databaseContext.SaveChanges();
 
                 return RedirectToAction(nameof(DisplayAllStudents));
             }
@@ -220,14 +190,10 @@ namespace CourseEnroll.WebUI.Controllers
             }
         }
 
-        public IActionResult DisplayAllStudents()
+        public async Task<IActionResult> DisplayAllStudents()
         {
-            var students = _databaseContext.Students.ToList();
-            foreach (var student in students)
-            {
-                _databaseContext.Entry(student).Collection(s => s.EnrolledCourses).Load();
-            }
-            return View(_mapper.Map<List<Student>, IEnumerable<StudentViewModel>>(students));
+            var students = await _studentProvider.GetAll();
+            return View(students);
         }
         #endregion
     }

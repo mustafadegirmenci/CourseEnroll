@@ -31,9 +31,18 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public Task<T?> Get(int id, CancellationToken cancellationToken)
     {
-        return _context
+        var entity = _context
             .Set<T>()
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+
+        entity.Wait(cancellationToken);
+        
+        foreach (var collectionEntry in _context.Entry(entity.Result).Collections)
+        {
+            collectionEntry.Load();
+        }
+
+        return entity;
     }
 
     public Task<List<T>> GetMultiple(IEnumerable<int> ids, CancellationToken cancellationToken)
@@ -46,8 +55,20 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public Task<List<T>> GetAll(CancellationToken cancellationToken)
     {
-        return _context
+        var students = _context
             .Set<T>()
-            .ToListAsync(cancellationToken);
+            .ToListAsync(cancellationToken: cancellationToken);
+
+        students.Wait(cancellationToken);
+        
+        foreach (var student in students.Result)
+        {
+            foreach (var collectionEntry in _context.Entry(student).Collections)
+            {
+                collectionEntry.Load();
+            }
+        }
+
+        return students;
     }
 }

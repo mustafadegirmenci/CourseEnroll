@@ -1,19 +1,23 @@
 using System.Reflection;
-using CourseEnroll.Persistence;
-using CourseEnroll.Persistence.Context;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using CourseEnroll.WebUI.Areas.Identity.Data;
+using CourseEnroll.WebUI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("AuthDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AuthDbContextConnection' not found.");
 
-// Add services to the container.
-builder.Services.ConfigurePersistence(builder.Configuration);
+builder.Services.AddDbContext<AuthDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddScoped<HttpService, HttpService>();
+builder.Services.AddScoped<StudentProvider, StudentProvider>();
+builder.Services.AddScoped<CourseProvider, CourseProvider>();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(
+builder.Services.AddDefaultIdentity<CourseEnrollWebUIUser>(
         options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<DataContext>();
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+    .AddEntityFrameworkStores<AuthDbContext>();
+
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 

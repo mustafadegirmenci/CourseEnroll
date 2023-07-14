@@ -1,4 +1,4 @@
-﻿@model CourseEnroll.WebUI.Models.Student.StudentViewModel;
+﻿@model StudentViewModel;
 
 <div class="mt-2" style="width:30%">
     <form asp-action="AddStudent">
@@ -16,7 +16,7 @@
 
         <div class="mb-3">
             <label asp-for="BirthDate" class="form-label">Birth Date</label>
-            <input asp-for="BirthDate" input type="text" class="form-control">
+            <input asp-for="BirthDate" input type="date" class="form-control">
             <span class="text-danger" asp-validation-for="BirthDate"></span>
         </div>
 

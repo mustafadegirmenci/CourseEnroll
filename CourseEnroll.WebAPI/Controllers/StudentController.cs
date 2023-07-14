@@ -1,6 +1,7 @@
 using CourseEnroll.Application.Features.StudentFeatures.CreateStudent;
 using CourseEnroll.Application.Features.StudentFeatures.DeleteStudent;
 using CourseEnroll.Application.Features.StudentFeatures.GetAllStudent;
+using CourseEnroll.Application.Features.StudentFeatures.GetStudent;
 using CourseEnroll.Application.Features.StudentFeatures.UpdateStudent;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,13 @@ public class StudentController : ControllerBase
         _mediator = mediator;
     }
 
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<GetStudentResponse>> GetById([FromRoute]GetStudentRequest request, CancellationToken cancellationToken)
+    {
+        var response = await _mediator.Send(request, cancellationToken);
+        return Ok(response.Student);
+    }
+    
     [HttpGet]
     public async Task<ActionResult<List<GetAllStudentResponse>>> GetAll(CancellationToken cancellationToken)
     {
@@ -41,8 +49,8 @@ public class StudentController : ControllerBase
         return Ok(response);
     }
     
-    [HttpDelete]
-    public async Task<ActionResult<CreateStudentResponse>> Delete(DeleteStudentRequest request,
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<CreateStudentResponse>> Delete([FromRoute]DeleteStudentRequest request,
         CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(request, cancellationToken);

@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CourseEnroll.WebAPI\CourseEnroll.WebAPI.csproj" />
+      <ProjectReference Include="..\CourseEnroll.Persistence\CourseEnroll.Persistence.csproj" />
     </ItemGroup>
 
 </Project>
