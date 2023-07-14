@@ -152,9 +152,11 @@ namespace CourseEnroll.WebUI.Controllers
             
             //TODO: Optimize here
             var allCourses = await _courseProvider.GetAll();
+
+            var enrolledCourses = student.EnrolledCourses;
+            var enrolledCourseIds = enrolledCourses.Select(c => c.Id);
             
-            var notEnrolledCourses = allCourses.Where(c => !c.Students.Contains(student)).ToList();
-            var enrolledCourses = allCourses.Where(c => c.Students.Contains(student)).ToList();
+            var notEnrolledCourses = allCourses.Where(c => !enrolledCourseIds.Contains(c.Id)).ToList();
 
             ViewBag.notEnrolledCourses = notEnrolledCourses;
             ViewBag.enrolledCourses = enrolledCourses;
@@ -180,6 +182,7 @@ namespace CourseEnroll.WebUI.Controllers
 
                 student.EnrolledCourses.Clear();
                 student.EnrolledCourses.AddRange(courses);
+                await _studentProvider.Update(student);
 
                 return RedirectToAction(nameof(DisplayAllStudents));
             }

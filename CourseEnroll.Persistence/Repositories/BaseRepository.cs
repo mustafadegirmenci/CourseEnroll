@@ -16,16 +16,19 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     
     public void Create(T entity)
     {
+        entity.DateCreated = DateTime.Now;
         _context.Add(entity);
     }
 
     public void Update(T entity)
     {
+        entity.DateUpdated = DateTime.Now;
         _context.Update(entity);
     }
 
     public void Delete(T entity)
     {
+        entity.DateDeleted = DateTime.Now;
         _context.Remove(entity);
     }
 
@@ -55,20 +58,20 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public Task<List<T>> GetAll(CancellationToken cancellationToken)
     {
-        var students = _context
+        var entitiesTask = _context
             .Set<T>()
             .ToListAsync(cancellationToken: cancellationToken);
 
-        students.Wait(cancellationToken);
+        entitiesTask.Wait(cancellationToken);
         
-        foreach (var student in students.Result)
+        foreach (var entity in entitiesTask.Result)
         {
-            foreach (var collectionEntry in _context.Entry(student).Collections)
+            foreach (var collectionEntry in _context.Entry(entity).Collections)
             {
                 collectionEntry.Load();
             }
         }
 
-        return students;
+        return entitiesTask;
     }
 }

@@ -19,7 +19,7 @@ public class CourseController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{Id}")]
     public async Task<ActionResult<GetCourseResponse>> GetById([FromRoute]GetCourseRequest request, CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(request, cancellationToken);
@@ -49,7 +49,7 @@ public class CourseController : ControllerBase
         return Ok(response);
     }
     
-    [HttpDelete("{id:int}")]
+    [HttpDelete("{Id}")]
     public async Task<ActionResult<CreateCourseResponse>> Delete([FromRoute]DeleteCourseRequest request,
         CancellationToken cancellationToken)
     {

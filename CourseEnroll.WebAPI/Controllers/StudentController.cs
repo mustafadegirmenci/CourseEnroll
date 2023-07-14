@@ -19,7 +19,7 @@ public class StudentController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{Id}")]
     public async Task<ActionResult<GetStudentResponse>> GetById([FromRoute]GetStudentRequest request, CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(request, cancellationToken);
@@ -49,7 +49,7 @@ public class StudentController : ControllerBase
         return Ok(response);
     }
     
-    [HttpDelete("{id:int}")]
+    [HttpDelete("{Id}")]
     public async Task<ActionResult<CreateStudentResponse>> Delete([FromRoute]DeleteStudentRequest request,
         CancellationToken cancellationToken)
     {

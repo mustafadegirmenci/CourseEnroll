@@ -15,7 +15,6 @@ public class GetAllStudentHandler : IRequestHandler<GetAllStudentRequest, GetAll
     public async Task<GetAllStudentResponse> Handle(GetAllStudentRequest request, CancellationToken cancellationToken)
     {
         var students = await _studentRepository.GetAll(cancellationToken);
-        
         return new GetAllStudentResponse { Students = students };
     }
 }
