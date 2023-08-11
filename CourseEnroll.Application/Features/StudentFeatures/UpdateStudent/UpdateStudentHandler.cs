@@ -19,15 +19,13 @@ public sealed class UpdateStudentHandler : IRequestHandler<UpdateStudentRequest,
     
     public async Task<UpdateStudentResponse> Handle(UpdateStudentRequest request, CancellationToken cancellationToken)
     {
-        var student = await _studentRepository.Get(request.Id, cancellationToken);
-        
-        await _unitOfWork.Save(cancellationToken);
+        var student = await _studentRepository.GetAsNoTracking(request.Id, cancellationToken);
+
         if (student != null)
         {        
             _mapper.Map(request, student);
 
             _studentRepository.Update(student);
-            await _unitOfWork.Save(cancellationToken);
         }
 
         return _mapper.Map<UpdateStudentResponse>(student);

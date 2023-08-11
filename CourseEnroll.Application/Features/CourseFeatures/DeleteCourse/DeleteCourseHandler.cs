@@ -24,7 +24,6 @@ public sealed class DeleteCourseHandler : IRequestHandler<DeleteCourseRequest, D
         if (course != null)
         {
             _courseRepository.Delete(course);
-            await _unitOfWork.Save(cancellationToken);
         }
         
         return _mapper.Map<DeleteCourseResponse>(course);

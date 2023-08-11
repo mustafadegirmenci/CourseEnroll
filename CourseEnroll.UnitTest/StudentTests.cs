@@ -3,6 +3,7 @@ using CourseEnroll.Application.Features.StudentFeatures.CreateStudent;
 using CourseEnroll.Application.Features.StudentFeatures.DeleteStudent;
 using CourseEnroll.Application.Features.StudentFeatures.GetAllStudent;
 using CourseEnroll.Application.Features.StudentFeatures.UpdateStudent;
+using CourseEnroll.Domain.Entities;
 using CourseEnroll.Persistence.Context;
 using CourseEnroll.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -95,7 +96,7 @@ public class StudentTests
         var createStudentResponse = await _createStudentHandler.Handle(createStudentRequest, default);
 
         // Act
-        var request = new UpdateStudentRequest(createStudentResponse.Id, firstName, lastName, birthDate);
+        var request = new UpdateStudentRequest(createStudentResponse.Id, firstName, lastName, birthDate, new List<Course>());
         var response = await _updateStudentHandler.Handle(request, default);
 
         // Assert
@@ -106,7 +107,7 @@ public class StudentTests
     public async Task UpdateStudentValidator(string firstName, string lastName, DateTime birthDate, bool shouldBeValid)
     {
         // Arrange
-        var request = new UpdateStudentRequest(111, firstName, lastName, birthDate);
+        var request = new UpdateStudentRequest(111, firstName, lastName, birthDate, new List<Course>());
         
         // Act
         var validationResult = await _updateStudentValidator.ValidateAsync(request);

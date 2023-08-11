@@ -1,5 +1,6 @@
 ﻿using CourseEnroll.Application.Repositories;
 using CourseEnroll.Domain.Common;
+using CourseEnroll.Domain.Entities;
 using CourseEnroll.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,14 +23,14 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
 
     public void Update(T entity)
     {
-        entity.DateUpdated = DateTime.Now;
         _context.Update(entity);
+        _context.SaveChanges();
     }
 
     public void Delete(T entity)
     {
-        entity.DateDeleted = DateTime.Now;
         _context.Remove(entity);
+        _context.SaveChanges();
     }
 
     public Task<T?> Get(int id, CancellationToken cancellationToken)
@@ -45,6 +46,17 @@ public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
             collectionEntry.Load();
         }
 
+        return entity;
+    }
+
+    public Task<T?> GetAsNoTracking(int id, CancellationToken cancellationToken)
+    {
+        var entity = _context
+            .Set<T>()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+
+        entity.Wait(cancellationToken);
         return entity;
     }
 

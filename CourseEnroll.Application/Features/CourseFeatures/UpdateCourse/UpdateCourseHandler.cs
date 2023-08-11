@@ -25,7 +25,6 @@ public sealed class UpdateCourseHandler : IRequestHandler<UpdateCourseRequest, U
             _mapper.Map(request, course);
 
             _courseRepository.Update(course);
-            await _unitOfWork.Save(cancellationToken);
         }
             
         return _mapper.Map<UpdateCourseResponse>(course);

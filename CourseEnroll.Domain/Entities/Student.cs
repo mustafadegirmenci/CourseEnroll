@@ -3,7 +3,7 @@ using CourseEnroll.Domain.Common;
 
 namespace CourseEnroll.Domain.Entities;
 
-public sealed class Student : BaseEntity
+public class Student : BaseEntity
 {
     [Required] public string FirstName { get; set; }
     [Required] public string LastName { get; set; }

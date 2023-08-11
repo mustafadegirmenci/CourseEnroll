@@ -6,7 +6,10 @@ var studentViewModel = Model;
 <div class="col-xl-6 col-lg-4 order-2 mb-4">
 	<div class="card h-300">
 		<div class="card-body">
-			<h4 class="fw-bold py-3 mb-0"><span class="text-muted fw-light">Student / Student Details / </span>@studentViewModel.FirstName @studentViewModel.LastName</h4>
+			<h4 class="fw-bold py-3 mb-0 text-body">
+				<span class="text-muted fw-light d-flex">Student / Student Details / </span>@studentViewModel.FirstName @studentViewModel.LastName
+			</h4>
+
 			<!-- Accordion -->
 			<div class="col-md">
 								
@@ -54,34 +57,19 @@ var studentViewModel = Model;
 					</div>
 				</div>
 
-				<div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">
+				<div id="accordionIconEnrolled" class="accordion mt-3 accordion-without-arrow">
 					<div class="accordion-item d-flex card">
 						<h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconH2@i">
 							<button
 								type="button"
 								class="accordion-button collapsed"
 								data-bs-toggle="collapse"
-								data-bs-target="#accordionIcon-i"
-								aria-controls="accordionIcon-i">
+								data-bs-target="#accordionIcon-e"
+								aria-controls="accordionIcon-e">
 								Enrolled Courses
 							</button>
-							<div class="dropdown mr-3">
-								<button
-									class="btn p-0"
-									type="button"
-									id="transactionID"
-									data-bs-toggle="dropdown"
-									aria-haspopup="true"
-									aria-expanded="false"><i class="bx bx-dots-vertical-rounded"></i>
-								</button>
-								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-									<a class="dropdown-item" href="/Enrollment/EditStudent?id=@studentViewModel.Id">Edit</a>
-									<a class="dropdown-item" href="/Enrollment/DeleteStudent?id=@studentViewModel.Id">Delete</a>
-									<a class="dropdown-item" href="/Enrollment/EnrollStudentInCourses?id=@studentViewModel.Id">Enroll</a>
-								</div>
-							</div>
 						</h2>
-						<div id="accordionIcon-i" class="accordion-collapse collapse " data-bs-parent="#accordionIcon">
+						<div id="accordionIcon-e" class="accordion-collapse collapse " data-bs-parent="#accordionIconEnrolled">
 							<div class="accordion-body">
 								@foreach (var course in studentViewModel.EnrolledCourses)
 								{
@@ -97,6 +85,28 @@ var studentViewModel = Model;
 									</div>
 									<!--/ List group Flush (Without main border) -->
 								}
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="accordionIconActions" class="accordion mt-3 accordion-without-arrow">
+					<div class="accordion-item d-flex card">
+						<h2 class="accordion-header text-body d-flex justify-content-between" id="accordionIconH2@i">
+							<button
+								type="button"
+								class="accordion-button collapsed"
+								data-bs-toggle="collapse"
+								data-bs-target="#accordionIcon-a"
+								aria-controls="accordionIcon-a">
+								Actions
+							</button>
+						</h2>
+						<div id="accordionIcon-a" class="accordion-collapse collapse " data-bs-parent="#accordionIconActions">
+							<div class="accordion-body">
+								<a type="button" class="btn btn-info" href="/Enrollment/EditStudent?id=@studentViewModel.Id">Edit</a>
+								<a type="button" class="btn btn-warning" href="/Enrollment/EnrollStudentInCourses?id=@studentViewModel.Id">Enroll</a>
+								<a type="button" class="btn btn-danger" href="/Enrollment/DeleteStudent?id=@studentViewModel.Id">Delete</a>
 							</div>
 						</div>
 					</div>

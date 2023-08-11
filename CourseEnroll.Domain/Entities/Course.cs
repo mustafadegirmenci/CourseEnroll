@@ -8,11 +8,4 @@ public sealed class Course : BaseEntity
 {
     [Required] public string CourseCode { get; set; }
     [Required] public string CourseName { get; set; }
-
-    public List<Student> Students { get; set; }
-
-    public Course()
-    {
-        Students = new();
-    }
 }

@@ -23,7 +23,6 @@ public sealed class DeleteStudentHandler : IRequestHandler<DeleteStudentRequest,
         if (student != null)
         {
             _studentRepository.Delete(student);
-            await _unitOfWork.Save(cancellationToken);
         }
         
         return _mapper.Map<DeleteStudentResponse>(student);
